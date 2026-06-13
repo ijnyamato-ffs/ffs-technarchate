@@ -64,8 +64,9 @@ body {
   /* Changed to absolute path from root */
   background-image: url('/assests/webbackground.png'); 
   background-size: cover;
-  background-position: center top;
+  background-position: center center;
   background-repeat: no-repeat;
+  background-color: var(--green-deep);
 }
 
 .site-bg::after {
@@ -1235,5 +1236,15 @@ body {
   * {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+}
+/* Ensure symbolic background image scales completely on mobile without cropping */
+@media (max-width: 768px) {
+  .site-bg {
+    background-size: contain;
+    background-position: center top; /* Anchors the art cleanly below the header */
+    background-attachment: scroll;
+    /* Optional: Adds subtle repeating or gradient logic if the screen is exceptionally tall */
+    background-color: #0b2217; 
   }
 }
