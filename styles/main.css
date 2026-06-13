@@ -110,8 +110,34 @@ body {
 }
 
 .site-nav.scrolled {
-  background: rgba(12, 36, 24, 0.86);
-  border-bottom-color: rgba(212, 175, 55, 0.25);
+  /* Dropped background opacity down to 18% for deep transparency */
+  background-color: rgba(18, 53, 36, 0.18); 
+  
+  /* Increased blur density to isolate text from background shapes */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  
+  /* Semi-transparent structural frost border */
+  border-bottom: 1px solid rgba(224, 242, 241, 0.12);
+  
+  /* Clean shadow depth to lift the navigation panel */
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* TARGET THE NAVIGATION LINKS: Add high-contrast readability protection */
+.site-nav.scrolled .nav-link, 
+.site-nav.scrolled .nav-wordmark {
+  color: var(--ivory);
+  /* Micro text shadow prevents letters from getting lost over bright star spots */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  font-weight: 500; /* Gives the typography slightly more presence */
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+/* Interactive Hover States */
+.site-nav.scrolled .nav-link:hover {
+  color: var(--gold-light);
+  text-shadow: 0 0 8px rgba(232, 204, 106, 0.4);
 }
 
 .nav-wordmark {
