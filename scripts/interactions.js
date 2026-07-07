@@ -155,4 +155,58 @@
     });
   });
 
+   /* ----------------------------------------------------------
+     LANDING SPLASH — Drag or Click to Reveal
+  ---------------------------------------------------------- */
+  const splash = document.getElementById('landing-splash');
+  const dragElement = document.getElementById('drag-arrow-container');
+  
+  if (splash && dragElement) {
+    let startY = 0;
+    let isDragging = false;
+
+    // Click fallback
+    dragElement.addEventListener('click', () => {
+      splash.classList.add('splash-revealed');
+    });
+
+    // Mouse events
+    dragElement.addEventListener('mousedown', (e) => {
+      startY = e.clientY;
+      isDragging = true;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      let currentY = e.clientY;
+      if (startY - currentY > 50) {
+        splash.classList.add('splash-revealed');
+        isDragging = false;
+      }
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    // Touch events for mobile
+    dragElement.addEventListener('touchstart', (e) => {
+      startY = e.touches[0].clientY;
+      isDragging = true;
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      let currentY = e.touches[0].clientY;
+      if (startY - currentY > 50) {
+        splash.classList.add('splash-revealed');
+        isDragging = false;
+      }
+    });
+
+    window.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+  }
+   
 })();
